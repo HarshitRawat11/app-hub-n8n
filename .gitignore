@@ -1,0 +1,13 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# n8n credential exports. `n8n export:credentials` writes real secrets
+# (and with --decrypted, in plain text). These must never enter git.
+credentials/
+*credentials*.json
+
+# OS/editor cruft
+.DS_Store
+*.swp
