@@ -1,0 +1,47 @@
+{
+  "id": "wI0KmRrmlsVxdGsp",
+  "name": "terraform-destroy-notifier",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "destroy-status",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6cad58a6-986f-468c-9383-609f4e1dda4e",
+      "name": "Webhook",
+      "webhookId": "2c29b23f-d2ae-445d-968f-336cd6254c17"
+    }
+  ],
+  "connections": {},
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {},
+  "activeVersionId": null,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2026-08-13T10:59:04.255Z",
+      "createdAt": "2026-08-13T10:59:04.255Z",
+      "role": "workflow:owner",
+      "workflowId": "wI0KmRrmlsVxdGsp",
+      "projectId": "eN0APBVyj52iwI9l"
+    }
+  ],
+  "activeVersion": null,
+  "tags": []
+}

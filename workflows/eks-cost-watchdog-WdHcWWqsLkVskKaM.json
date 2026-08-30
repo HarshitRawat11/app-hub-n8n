@@ -1,0 +1,239 @@
+{
+  "id": "WdHcWWqsLkVskKaM",
+  "name": "eks-cost-watchdog",
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 17
+            },
+            {
+              "triggerAtHour": 21
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -208,
+        0
+      ],
+      "id": "2f800b10-5214-4b88-85ae-92a9f48d7626",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "url": "https://eks.ap-south-1.amazonaws.com/clusters/app-hub-eks",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "aws",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        80,
+        0
+      ],
+      "id": "f72b89f9-0ad5-42ea-b536-b0f6c9891d3f",
+      "name": "HTTP Request",
+      "credentials": {
+        "aws": {
+          "id": "VXUzVXUlEAsDEOYm",
+          "name": "AWS (IAM) account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "harshitrawat2011@gmail.com",
+        "subject": "⚠️ app-hub EKS cluster still running",
+        "message": "=The app-hub EKS cluster is still up. Remember to destroy it if you're done for the day.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        384,
+        0
+      ],
+      "id": "efae7b26-aeb1-4bf5-a4bc-7c94419fa5d7",
+      "name": "Send a message",
+      "webhookId": "a87d54ef-3ebd-46ab-8d7b-1c48c09b948a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "vFqBu8LjSAIDUMcZ",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": [
+        null,
+        null
+      ],
+      "recurrenceRuleSignatures": [
+        null,
+        null
+      ]
+    }
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "nodeGroups": [],
+  "pinData": {},
+  "activeVersionId": "78c52a39-791d-4439-9f22-b5d711bf3f85",
+  "triggerCount": 1,
+  "shared": [
+    {
+      "updatedAt": "2026-08-07T09:59:12.938Z",
+      "createdAt": "2026-08-07T09:59:12.938Z",
+      "role": "workflow:owner",
+      "workflowId": "WdHcWWqsLkVskKaM",
+      "projectId": "eN0APBVyj52iwI9l"
+    }
+  ],
+  "activeVersion": {
+    "updatedAt": "2026-08-13T10:58:24.000Z",
+    "createdAt": "2026-08-13T10:58:21.908Z",
+    "versionId": "78c52a39-791d-4439-9f22-b5d711bf3f85",
+    "workflowId": "WdHcWWqsLkVskKaM",
+    "nodes": [
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "triggerAtHour": 17
+              },
+              {
+                "triggerAtHour": 21
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.3,
+        "position": [
+          -208,
+          0
+        ],
+        "id": "2f800b10-5214-4b88-85ae-92a9f48d7626",
+        "name": "Schedule Trigger"
+      },
+      {
+        "parameters": {
+          "url": "https://eks.ap-south-1.amazonaws.com/clusters/app-hub-eks",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "aws",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.5,
+        "position": [
+          80,
+          0
+        ],
+        "id": "f72b89f9-0ad5-42ea-b536-b0f6c9891d3f",
+        "name": "HTTP Request",
+        "credentials": {
+          "aws": {
+            "id": "VXUzVXUlEAsDEOYm",
+            "name": "AWS (IAM) account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "sendTo": "harshitrawat2011@gmail.com",
+          "subject": "⚠️ app-hub EKS cluster still running",
+          "message": "=The app-hub EKS cluster is still up. Remember to destroy it if you're done for the day.",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.2,
+        "position": [
+          384,
+          0
+        ],
+        "id": "efae7b26-aeb1-4bf5-a4bc-7c94419fa5d7",
+        "name": "Send a message",
+        "webhookId": "a87d54ef-3ebd-46ab-8d7b-1c48c09b948a",
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "vFqBu8LjSAIDUMcZ",
+            "name": "Gmail account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Schedule Trigger": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTTP Request": {
+        "main": [
+          [
+            {
+              "node": "Send a message",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          []
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "Harshit Rawat",
+    "name": "Version 78c52a39",
+    "description": "",
+    "autosaved": true
+  },
+  "tags": []
+}

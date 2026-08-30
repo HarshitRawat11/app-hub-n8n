@@ -19,24 +19,48 @@ n8n/
 
 ---
 
-## Setup
+## Setup — filling in `.env` (task N-03)
+
+**Step 1.** Copy the template:
 
 ```bash
 cp .env.example .env
 ```
 
-Then open `.env` and fill in:
-
-- `N8N_BASE_URL` — your instance, no trailing slash (e.g. `http://localhost:5678`)
-- `N8N_API_KEY` — from **Settings → n8n API → Create an API key** in the n8n UI
-
-`.env` is gitignored. Verify that before you paste anything into it:
+**Step 2.** Verify it is gitignored *before* putting a real key in it:
 
 ```bash
 git check-ignore -v .env
 ```
 
-If that prints a rule, you're safe. If it prints nothing, stop and fix `.gitignore` first.
+Expect `.gitignore:2:.env	.env`. If it prints **nothing**, stop — the file is not ignored and anything you paste in could be committed.
+
+**Step 3.** Get the API key from n8n: open the UI → **Settings** → **n8n API** → **Create an API key**. Set an expiry if your version offers one. Copy it.
+
+**Step 4.** Open `.env` in an editor and fill in both values:
+
+```
+N8N_BASE_URL=http://localhost:5678
+N8N_API_KEY=<paste here>
+```
+
+`N8N_BASE_URL` must have **no trailing slash** — the script appends `/api/v1/...` directly.
+
+**Step 5.** Confirm it loads, without printing the value:
+
+```bash
+set -a && . ./.env && set +a && [ -n "$N8N_API_KEY" ] && echo "key set (${#N8N_API_KEY} chars), base=$N8N_BASE_URL"
+```
+
+`${#VAR}` gives a variable's length — enough to confirm it loaded and looks plausible, without revealing it.
+
+**Step 6.** Confirm git still does not see it:
+
+```bash
+git status --short
+```
+
+`.env` must not appear.
 
 ---
 
@@ -87,11 +111,49 @@ These are not optional. The n8n API key grants full read, write, and execute acc
 
 If the key is ever exposed: revoke it in **Settings → n8n API** immediately and issue a new one. Revocation is instant and cheap; assuming it was fine is not.
 
-### On the encryption key
+### Backing up the encryption key (task N-05)
 
-n8n encrypts stored credentials with an encryption key generated on first launch and kept in `~/.n8n`. It is not in this repo and must not be.
+n8n encrypts stored credentials with a key generated on first launch. It is **not** in this repo and must never be.
 
-It matters for one reason: **if you lose it, every stored credential becomes undecryptable** and has to be re-entered by hand. Back it up somewhere outside this repo — a password manager is the right place. Restoring an n8n instance without it restores the workflows but none of their connections.
+**Why this is the single most important backup in the n8n setup:** lose the key and every stored credential becomes undecryptable. The workflows survive; every connection they use has to be re-authorised by hand. It also has to be supplied as-is when n8n moves onto EKS (`N-06`) — a fresh instance generates a *new* key, which would orphan every existing credential.
+
+n8n runs locally as:
+
+```bash
+docker run -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n
+```
+
+So the key lives in the **`n8n_data`** Docker volume, at `/home/node/.n8n/config`. It survives container restarts and recreation — but not `docker volume rm n8n_data`.
+
+**Step 1.** Find your container name:
+
+```bash
+docker ps --format "{{.Names}}\t{{.Image}}" | grep -i n8n
+```
+
+**Step 2.** Check whether the key is set as an environment variable — if it is, that value is the key and the config file may not exist:
+
+```bash
+docker exec <n8n-container> printenv N8N_ENCRYPTION_KEY
+```
+
+**Step 3.** Otherwise read it from the config file. **Run this yourself; do not paste the output into a chat window:**
+
+```bash
+docker exec <n8n-container> cat /home/node/.n8n/config
+```
+
+The `encryptionKey` field is the value to save.
+
+**To avoid it appearing on screen at all**, pipe straight to the clipboard:
+
+```bash
+docker exec <n8n-container> cat /home/node/.n8n/config | clip
+```
+
+**Step 4.** Paste it into your password manager, labelled clearly (e.g. "n8n encryption key — app-hub"). Not into this repo, not into a note file in the project, not into a chat.
+
+**Step 5.** Sanity-check that you can find it again in six months. That is the entire point of the exercise.
 
 ---
 
