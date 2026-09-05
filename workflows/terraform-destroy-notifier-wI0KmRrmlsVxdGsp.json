@@ -2,7 +2,7 @@
   "id": "wI0KmRrmlsVxdGsp",
   "name": "terraform-destroy-notifier",
   "active": true,
-  "activeVersionId": "fe32d100-363e-49b0-96e5-54bddda68c08",
+  "activeVersionId": "3781f1b3-b15f-40b4-846c-c433973a5cad",
   "isArchived": false,
   "triggerCount": 1,
   "nodes": [
@@ -58,49 +58,50 @@
     },
     {
       "parameters": {
-        "sendTo": "harshitrawat2011@gmail.com",
+        "fromEmail": "harshitrawat2011@gmail.com",
+        "toEmail": "harshitrawat2011@gmail.com",
         "subject": "✅ app-hub infra destroyed successfully",
-        "emailType": "text",
-        "message": "Terraform destroy completed cleanly. Cluster is down.",
+        "emailFormat": "text",
+        "text": "Terraform destroy completed cleanly. Cluster is down.",
         "options": {}
       },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.2,
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
       "position": [
-        240,
+        256,
         -96
       ],
-      "id": "49ec80a7-d23e-44f5-87fb-7a810648d603",
+      "id": "2b245663-e07b-4958-9ee6-544335c92f09",
       "name": "Success",
-      "webhookId": "901a0f40-bf27-4fe1-b8b9-e0068a49b03a",
+      "webhookId": "8d38c042-cbfc-4de9-945a-e124ab3bd8a6",
       "credentials": {
-        "gmailOAuth2": {
-          "id": "vFqBu8LjSAIDUMcZ",
-          "name": "Gmail account"
+        "smtp": {
+          "id": "mjYMkgPkZ0yrNfYU",
+          "name": "SMTP account"
         }
       }
     },
     {
       "parameters": {
-        "sendTo": "harshitrawat2011@gmail.com",
+        "fromEmail": "harshitrawat2011@gmail.com",
+        "toEmail": "harshitrawat2011@gmail.com",
         "subject": "❌ app-hub destroy FAILED",
-        "emailType": "text",
-        "message": "=Destroy failed. Terraform output:    \n{{ $json.body.output }}",
+        "html": "=Destroy failed. Terraform output:    \n{{ $json.body.output }}",
         "options": {}
       },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.2,
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
       "position": [
-        240,
+        256,
         96
       ],
-      "id": "4f7fbedf-e27a-45c4-a638-17942c41377a",
+      "id": "604e929e-2ec4-4385-b060-14683cd9df69",
       "name": "Failure",
-      "webhookId": "121e3796-93f2-4723-a671-d9efa0376ae0",
+      "webhookId": "52361f2a-d4ff-4680-ad73-4de2b1cf89ae",
       "credentials": {
-        "gmailOAuth2": {
-          "id": "vFqBu8LjSAIDUMcZ",
-          "name": "Gmail account"
+        "smtp": {
+          "id": "mjYMkgPkZ0yrNfYU",
+          "name": "SMTP account"
         }
       }
     }
@@ -158,7 +159,7 @@
     }
   ],
   "activeVersion": {
-    "versionId": "fe32d100-363e-49b0-96e5-54bddda68c08",
+    "versionId": "3781f1b3-b15f-40b4-846c-c433973a5cad",
     "workflowId": "wI0KmRrmlsVxdGsp",
     "nodes": [
       {
@@ -213,49 +214,50 @@
       },
       {
         "parameters": {
-          "sendTo": "harshitrawat2011@gmail.com",
+          "fromEmail": "harshitrawat2011@gmail.com",
+          "toEmail": "harshitrawat2011@gmail.com",
           "subject": "✅ app-hub infra destroyed successfully",
-          "emailType": "text",
-          "message": "Terraform destroy completed cleanly. Cluster is down.",
+          "emailFormat": "text",
+          "text": "Terraform destroy completed cleanly. Cluster is down.",
           "options": {}
         },
-        "type": "n8n-nodes-base.gmail",
-        "typeVersion": 2.2,
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 2.1,
         "position": [
-          240,
+          256,
           -96
         ],
-        "id": "49ec80a7-d23e-44f5-87fb-7a810648d603",
+        "id": "2b245663-e07b-4958-9ee6-544335c92f09",
         "name": "Success",
-        "webhookId": "901a0f40-bf27-4fe1-b8b9-e0068a49b03a",
+        "webhookId": "8d38c042-cbfc-4de9-945a-e124ab3bd8a6",
         "credentials": {
-          "gmailOAuth2": {
-            "id": "vFqBu8LjSAIDUMcZ",
-            "name": "Gmail account"
+          "smtp": {
+            "id": "mjYMkgPkZ0yrNfYU",
+            "name": "SMTP account"
           }
         }
       },
       {
         "parameters": {
-          "sendTo": "harshitrawat2011@gmail.com",
+          "fromEmail": "harshitrawat2011@gmail.com",
+          "toEmail": "harshitrawat2011@gmail.com",
           "subject": "❌ app-hub destroy FAILED",
-          "emailType": "text",
-          "message": "=Destroy failed. Terraform output:    \n{{ $json.body.output }}",
+          "html": "=Destroy failed. Terraform output:    \n{{ $json.body.output }}",
           "options": {}
         },
-        "type": "n8n-nodes-base.gmail",
-        "typeVersion": 2.2,
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 2.1,
         "position": [
-          240,
+          256,
           96
         ],
-        "id": "4f7fbedf-e27a-45c4-a638-17942c41377a",
+        "id": "604e929e-2ec4-4385-b060-14683cd9df69",
         "name": "Failure",
-        "webhookId": "121e3796-93f2-4723-a671-d9efa0376ae0",
+        "webhookId": "52361f2a-d4ff-4680-ad73-4de2b1cf89ae",
         "credentials": {
-          "gmailOAuth2": {
-            "id": "vFqBu8LjSAIDUMcZ",
-            "name": "Gmail account"
+          "smtp": {
+            "id": "mjYMkgPkZ0yrNfYU",
+            "name": "SMTP account"
           }
         }
       }
@@ -293,10 +295,10 @@
     },
     "nodeGroups": [],
     "authors": "Harshit Rawat",
-    "name": "Version fe32d100",
+    "name": "Version 3781f1b3",
     "description": "",
     "autosaved": true,
-    "createdAt": "2026-09-04T08:12:41.253Z",
-    "updatedAt": "2026-09-04T08:12:54.000Z"
+    "createdAt": "2026-09-05T10:42:21.324Z",
+    "updatedAt": "2026-09-05T10:43:18.000Z"
   }
 }

@@ -2,7 +2,7 @@
   "id": "WdHcWWqsLkVskKaM",
   "name": "eks-cost-watchdog",
   "active": true,
-  "activeVersionId": "78c52a39-791d-4439-9f22-b5d711bf3f85",
+  "activeVersionId": "6e3a9951-b00d-4b33-aba4-312b16b9b576",
   "isArchived": false,
   "triggerCount": 1,
   "nodes": [
@@ -52,24 +52,26 @@
     },
     {
       "parameters": {
-        "sendTo": "harshitrawat2011@gmail.com",
+        "fromEmail": "harshitrawat2011@gmail.com",
+        "toEmail": "harshitrawat2011@gmail.com",
         "subject": "⚠️ app-hub EKS cluster still running",
-        "message": "=The app-hub EKS cluster is still up. Remember to destroy it if you're done for the day.",
+        "emailFormat": "text",
+        "text": "The app-hub EKS cluster is still up. Remember to destroy it if you're done for the day.",
         "options": {}
       },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.2,
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
       "position": [
-        384,
+        368,
         0
       ],
-      "id": "efae7b26-aeb1-4bf5-a4bc-7c94419fa5d7",
-      "name": "Send a message",
-      "webhookId": "a87d54ef-3ebd-46ab-8d7b-1c48c09b948a",
+      "id": "9475255e-c186-4476-bc1d-b97e146a3caf",
+      "name": "Send an Email",
+      "webhookId": "1e56535b-8b59-48f3-b24e-c9dd89108c17",
       "credentials": {
-        "gmailOAuth2": {
-          "id": "vFqBu8LjSAIDUMcZ",
-          "name": "Gmail account"
+        "smtp": {
+          "id": "mjYMkgPkZ0yrNfYU",
+          "name": "SMTP account"
         }
       }
     }
@@ -90,7 +92,7 @@
       "main": [
         [
           {
-            "node": "Send a message",
+            "node": "Send an Email",
             "type": "main",
             "index": 0
           }
@@ -132,7 +134,7 @@
     }
   ],
   "activeVersion": {
-    "versionId": "78c52a39-791d-4439-9f22-b5d711bf3f85",
+    "versionId": "6e3a9951-b00d-4b33-aba4-312b16b9b576",
     "workflowId": "WdHcWWqsLkVskKaM",
     "nodes": [
       {
@@ -181,24 +183,26 @@
       },
       {
         "parameters": {
-          "sendTo": "harshitrawat2011@gmail.com",
+          "fromEmail": "harshitrawat2011@gmail.com",
+          "toEmail": "harshitrawat2011@gmail.com",
           "subject": "⚠️ app-hub EKS cluster still running",
-          "message": "=The app-hub EKS cluster is still up. Remember to destroy it if you're done for the day.",
+          "emailFormat": "text",
+          "text": "The app-hub EKS cluster is still up. Remember to destroy it if you're done for the day.",
           "options": {}
         },
-        "type": "n8n-nodes-base.gmail",
-        "typeVersion": 2.2,
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 2.1,
         "position": [
-          384,
+          368,
           0
         ],
-        "id": "efae7b26-aeb1-4bf5-a4bc-7c94419fa5d7",
-        "name": "Send a message",
-        "webhookId": "a87d54ef-3ebd-46ab-8d7b-1c48c09b948a",
+        "id": "9475255e-c186-4476-bc1d-b97e146a3caf",
+        "name": "Send an Email",
+        "webhookId": "1e56535b-8b59-48f3-b24e-c9dd89108c17",
         "credentials": {
-          "gmailOAuth2": {
-            "id": "vFqBu8LjSAIDUMcZ",
-            "name": "Gmail account"
+          "smtp": {
+            "id": "mjYMkgPkZ0yrNfYU",
+            "name": "SMTP account"
           }
         }
       }
@@ -219,7 +223,7 @@
         "main": [
           [
             {
-              "node": "Send a message",
+              "node": "Send an Email",
               "type": "main",
               "index": 0
             }
@@ -230,10 +234,10 @@
     },
     "nodeGroups": [],
     "authors": "Harshit Rawat",
-    "name": "Version 78c52a39",
+    "name": "Version 6e3a9951",
     "description": "",
     "autosaved": true,
-    "createdAt": "2026-08-13T10:58:21.908Z",
-    "updatedAt": "2026-08-13T10:58:24.000Z"
+    "createdAt": "2026-09-05T10:36:12.385Z",
+    "updatedAt": "2026-09-05T10:36:14.000Z"
   }
 }
