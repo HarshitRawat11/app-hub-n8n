@@ -2,7 +2,9 @@
   "id": "WdHcWWqsLkVskKaM",
   "name": "eks-cost-watchdog",
   "active": true,
+  "activeVersionId": "78c52a39-791d-4439-9f22-b5d711bf3f85",
   "isArchived": false,
+  "triggerCount": 1,
   "nodes": [
     {
       "parameters": {
@@ -97,6 +99,7 @@
       ]
     }
   },
+  "nodeGroups": [],
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
@@ -114,25 +117,21 @@
       ]
     }
   },
+  "pinData": {},
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "nodeGroups": [],
-  "pinData": {},
-  "activeVersionId": "78c52a39-791d-4439-9f22-b5d711bf3f85",
-  "triggerCount": 1,
+  "tags": [],
   "shared": [
     {
-      "updatedAt": "2026-08-07T09:59:12.938Z",
-      "createdAt": "2026-08-07T09:59:12.938Z",
       "role": "workflow:owner",
       "workflowId": "WdHcWWqsLkVskKaM",
-      "projectId": "eN0APBVyj52iwI9l"
+      "projectId": "eN0APBVyj52iwI9l",
+      "createdAt": "2026-08-07T09:59:12.938Z",
+      "updatedAt": "2026-08-07T09:59:12.938Z"
     }
   ],
   "activeVersion": {
-    "updatedAt": "2026-08-13T10:58:24.000Z",
-    "createdAt": "2026-08-13T10:58:21.908Z",
     "versionId": "78c52a39-791d-4439-9f22-b5d711bf3f85",
     "workflowId": "WdHcWWqsLkVskKaM",
     "nodes": [
@@ -233,7 +232,8 @@
     "authors": "Harshit Rawat",
     "name": "Version 78c52a39",
     "description": "",
-    "autosaved": true
-  },
-  "tags": []
+    "autosaved": true,
+    "createdAt": "2026-08-13T10:58:21.908Z",
+    "updatedAt": "2026-08-13T10:58:24.000Z"
+  }
 }
